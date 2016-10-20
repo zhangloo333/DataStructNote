@@ -28,6 +28,7 @@ function BST() {
     this.root = null;
     this.insert = insert;
     this.inOrder = inOrder;
+    this.getMin = getMin;
 }
 
 /**
@@ -75,18 +76,34 @@ function inOrder(node) {
 
 }
 
+
+
+/**
+ *  get Min value in BST
+ * */
+
+function getMin () {
+    var current = this.root;
+    while (!(current.left == null)) {
+        current = current.left;
+    }
+    return current.data; //如果 current 这个current是空的情况下, current
+}
+
 /**
  * main function test
  * */
 
 var nums = new BST();
-nums.insert(10);
-nums.insert(30);
-nums.insert(77);
-nums.insert(92);
-nums.insert(56);
+nums.insert(23);
+nums.insert(45);
+nums.insert(16);
+nums.insert(37);
+nums.insert(3);
+nums.insert(99);
 nums.insert(22);
-nums.insert(81);
 
 print("inorder traversal:");
-inOrder(nums.root);
+// inOrder(nums.root);
+var min = nums.getMin();
+print("the minimum value of the BST is: " + min);
