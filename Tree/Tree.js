@@ -90,6 +90,44 @@ function getMin () {
     return current.data; //如果 current 这个current是空的情况下, current
 }
 
+
+/**
+ * find a centain value
+ * */
+
+BST.prototype.find = function (value) {
+    var current = this.root;
+    while(current != null) {
+        if (current.data == value) {
+            return current;
+        } else if (value < current.data) {
+            current = current.left;
+        } else if (value > current.data) {
+            current = current.right;
+        }
+    }
+    return null;
+}
+
+/**
+ * delete the TreeNode
+ *
+ * */
+
+BST.prototype.Delete = function (data) {
+
+    var dummyRoot = new Node(-1000,this.root,null);
+    var prev = dummyRoot;
+    var cur = this.root;
+    // 1. find the node with vale
+    while (!(cur == null && cur.data == null)) {
+        prev = cur;
+        if(cur.val)
+    }
+
+}
+
+
 /**
  * main function test
  * */
@@ -107,3 +145,11 @@ print("inorder traversal:");
 // inOrder(nums.root);
 var min = nums.getMin();
 print("the minimum value of the BST is: " + min);
+
+// find a certain value
+var found = nums.find(23);
+if(found != null) {
+    print("found the value: " + found.data);
+} else {
+    print("value has no found")
+}
