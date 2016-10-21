@@ -115,15 +115,56 @@ BST.prototype.find = function (value) {
  * */
 
 BST.prototype.Delete = function (data) {
+    if(this.root == null){
+        return root;
+    }
 
     var dummyRoot = new Node(-1000,this.root,null);
     var prev = dummyRoot;
     var cur = this.root;
+
     // 1. find the node with vale
-    while (!(cur == null && cur.data == null)) {
+    while (cur != null && cur.data != null) {
         prev = cur;
-        if(cur.val)
+        if(cur.data < data){
+            cur = cur.right;
+        } else {
+            cur = cur.left;
+        }
     }
+    if(cur == null) {
+        return dummyRoot.left;
+    }
+    var target = cur;
+
+    // case 2: two child
+    if(cur.left != null && cur.right != null){
+        // 2.1 find the leftmost node in right subtree
+        prev = cur;
+        cur = cur.right;
+        while(cur.left != null){
+            prev = cur;
+            cur = cur.left;
+        }
+        // 2.2 change value
+        target.val = cur.val;
+    }
+
+    // case2: Delete cur, which has one or no child
+    if(cur.left == null){
+        if(prev.left == cur){
+            prev.left = cur.right;
+        } else {
+            prev.right = cur.right;
+        }
+    } else {
+        if (prev.left == cur){
+            prev.left = cur.left;
+        } else {
+            prev.right =cur.left;
+        }
+    }
+     return dummyRoot.left;
 
 }
 
@@ -146,6 +187,9 @@ print("inorder traversal:");
 var min = nums.getMin();
 print("the minimum value of the BST is: " + min);
 
+nums.root = nums.Delete(23);
+
+
 // find a certain value
 var found = nums.find(23);
 if(found != null) {
@@ -153,3 +197,5 @@ if(found != null) {
 } else {
     print("value has no found")
 }
+
+inOrder(nums.root);
