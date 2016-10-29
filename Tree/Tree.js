@@ -124,7 +124,7 @@ BST.prototype.Delete = function (data) {
     var cur = this.root;
 
     // 1. find the node with vale
-    while (cur != null && cur.data != null) {
+    while (cur != null && cur.data != data) {
         prev = cur;
         if(cur.data < data){
             cur = cur.right;
@@ -147,7 +147,7 @@ BST.prototype.Delete = function (data) {
             cur = cur.left;
         }
         // 2.2 change value
-        target.val = cur.val;
+        target.data = cur.data;
     }
 
     // case2: Delete cur, which has one or no child
