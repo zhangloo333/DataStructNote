@@ -73,7 +73,29 @@ function inOrder(node) {
         console.log(node.show());
         inOrder(node.right);
     }
+}
 
+/**
+ * tree traverse pre-order
+ * */
+
+function preOder(node){
+    if(!(node == null)){
+        console.log(node.show());
+        preOder(node.left);
+        preOder(node.right);
+    }
+}
+
+/**
+ * post-order
+ **/
+function postOrder(node){
+    if(node != null){
+        postOrder(node.left);
+        postOrder(node.right);
+        print(node.show());
+    }
 }
 
 
@@ -183,7 +205,17 @@ nums.insert(99);
 nums.insert(22);
 
 print("inorder traversal:");
-// inOrder(nums.root);
+ inOrder(nums.root);
+
+print("preorder traversal:");
+ preOder(nums.root);
+
+print("post traversal:");
+ postOrder(nums.root);
+
+
+
+
 var min = nums.getMin();
 print("the minimum value of the BST is: " + min);
 
