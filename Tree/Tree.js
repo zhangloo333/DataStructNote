@@ -168,6 +168,27 @@ BST.prototype.Delete = function (data) {
 
 }
 
+/**
+ * find the public anences
+ * */
+
+function FinderAnces(a, b, root) {
+    if(root == null || root.data == a || root.data == b){
+        return root;
+    }
+    var left = FinderAnces(a,b,root.left);
+    var right = FinderAnces(a,b,root.right);
+
+    if(left != null && right != null){
+        return root;
+    }
+
+    if(left != null) return left;
+
+    return right;
+}
+
+
 
 /**
  * main function test
@@ -187,7 +208,11 @@ print("inorder traversal:");
 var min = nums.getMin();
 print("the minimum value of the BST is: " + min);
 
-nums.root = nums.Delete(23);
+print("find public ancces")
+print(FinderAnces(100,66, nums.root));
+
+
+// nums.root = nums.Delete(23);
 
 
 // find a certain value
