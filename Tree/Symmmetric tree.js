@@ -77,50 +77,35 @@ function buildTree(){
     this.root = null;
     this.insert = insert;
     this.queue = [];
+    this.header = 0;
 }
 
 function insert(data){
     var node = new Node(data,null,null);
+
     if(this.root == null) {
         this.root = node;
-        this.queue.push(node.value);
+        this.queue.push(this.root);
     } else{
 
-        // if(this.queue.length != 0){
-        //     if(this.queue[0].left != null && this.queue[0].right != null){
-        //         this.queue.shift();
-        //     }
-        //     if(this.queue[0].left == null){
-        //         this.queue[0].left = node;
-        //
-        //     } else {
-        //         this.queue[0].right = node;
-        //     }
-        //     this.queue.push(Node);
-        // }
-        var current = this.root;
-        var parent = current;
-        helper(current,parent,node);
-
+        while(this.queue.length >0){
+            if(this.queue[this.header].left == null){
+                this.queue[this.header].left = node;
+                this.queue.push(node);
+                break;
+            }else if(this.queue[this.header].right == null){
+                this.queue[this.header].right = node;
+                this.queue.push(node);
+                break;
+            }else if(this.queue[this.header].left != null && this.queue[this.header].right != null){
+                this.header++;
+                this.queue.push(node);
+            }
+        }
     }
 }
 
-function helper(current,parent, node) {
-    if(current.left == null){
-        current.left = node;
-        return;
-    } else{
-        current.right = node;
-        return;
-    }
-    if(current.left != null && current.right != null){
-        current = current.left;
 
-        helper(current,parent,node);
-        helper(current,parent,node);
-        return current;
-    }
-}
 
 var BB = new buildTree();
 BB.insert(1);
@@ -148,8 +133,46 @@ node3.left = node6;
 node3.right = node7;
 
 console.log(node1);
-
+/**
+ * for testing function
+ *
+ * */
 var aa = [];
 aa.push(1);
 aa.unshift(2);
 console.log(aa);
+
+
+//function helper(current,parent, node) {
+//    if(current.left == null){
+//        current.left = node;
+//        return;
+//    } else{
+//        current.right = node;
+//        return;
+//    }
+//    if(current.left != null && current.right != null){
+//        current = current.left;
+//
+//        helper(current,parent,node);
+//        helper(current,parent,node);
+//        return current;
+//    }
+//}
+
+
+// if(this.queue.length != 0){
+//     if(this.queue[0].left != null && this.queue[0].right != null){
+//         this.queue.shift();
+//     }
+//     if(this.queue[0].left == null){
+//         this.queue[0].left = node;
+//
+//     } else {
+//         this.queue[0].right = node;
+//     }
+//     this.queue.push(Node);
+// }
+//var current = this.root;
+//var parent = current;
+//helper(current,parent,node);
