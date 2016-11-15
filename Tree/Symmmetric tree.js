@@ -76,27 +76,78 @@ function show(){
 function buildTree(){
     this.root = null;
     this.insert = insert;
+    this.queue = [];
 }
 
 function insert(data){
     var node = new Node(data,null,null);
-    var queue = [];
     if(this.root == null) {
         this.root = node;
-        queue.push(node);
-    }else{
-        while(!queue.length == 0){
-            var size = queue.length;
-            
-        }
-    }
+        this.queue.push(node.value);
+    } else{
 
+        // if(this.queue.length != 0){
+        //     if(this.queue[0].left != null && this.queue[0].right != null){
+        //         this.queue.shift();
+        //     }
+        //     if(this.queue[0].left == null){
+        //         this.queue[0].left = node;
+        //
+        //     } else {
+        //         this.queue[0].right = node;
+        //     }
+        //     this.queue.push(Node);
+        // }
+        var current = this.root;
+        var parent = current;
+        helper(current,parent,node);
+
+    }
+}
+
+function helper(current,parent, node) {
+    if(current.left == null){
+        current.left = node;
+        return;
+    } else{
+        current.right = node;
+        return;
+    }
+    if(current.left != null && current.right != null){
+        current = current.left;
+
+        helper(current,parent,node);
+        helper(current,parent,node);
+        return current;
+    }
 }
 
 var BB = new buildTree();
 BB.insert(1);
 BB.insert(2);
 BB.insert(2);
+BB.insert(3);
+BB.insert(4);
+BB.insert(3);
+BB.insert(4);
+
+
+var node1 = new Node(1,null,null);
+var node2 = new Node(2,null,null);
+var node3 = new Node(2,null,null);
+var node4 = new Node(3,null,null);
+var node5 = new Node(4,null,null);
+var node6 = new Node(3,null,null);
+var node7 = new Node(4,null,null);
+
+node1.left = node2;
+node1.right = node3;
+node2.left = node4;
+node2.right = node5;
+node3.left = node6;
+node3.right = node7;
+
+console.log(node1);
 
 var aa = [];
 aa.push(1);
