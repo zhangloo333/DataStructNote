@@ -42,9 +42,9 @@ function isSymmetric(root) {
     var deque = [];
     deque.unshift(root.left);
     deque.push(root.right);
-    while(!(deque.length == 0)) {
+    while(deque.length != 0) {
         var left = deque.shift();
-        var right = deque.push();
+        var right = deque.pop();
 
         if(left == null && right == null) {
             continue;
@@ -56,8 +56,8 @@ function isSymmetric(root) {
 
         deque.unshift(left.right);
         deque.unshift(left.left);
-        deque.push(left.left);
-        deque.push(left.right);
+        deque.push(right.left);  // 这里是right 不是left
+        deque.push(right.right);  // 这里是right 不是left
     }
     return true;
 }
@@ -111,68 +111,20 @@ var BB = new buildTree();
 BB.insert(1);
 BB.insert(2);
 BB.insert(2);
-BB.insert(3);
 BB.insert(4);
-BB.insert(3);
+BB.insert(5);
+BB.insert(5);
 BB.insert(4);
+BB.insert(6);
+BB.insert(7);
+BB.insert(8);
+BB.insert(9);
+BB.insert(9);
+BB.insert(8);
+BB.insert(7);
+BB.insert(6);
+
+var Symmetric = isSymmetric(BB.root);
+console.log(Symmetric);
 
 
-var node1 = new Node(1,null,null);
-var node2 = new Node(2,null,null);
-var node3 = new Node(2,null,null);
-var node4 = new Node(3,null,null);
-var node5 = new Node(4,null,null);
-var node6 = new Node(3,null,null);
-var node7 = new Node(4,null,null);
-
-node1.left = node2;
-node1.right = node3;
-node2.left = node4;
-node2.right = node5;
-node3.left = node6;
-node3.right = node7;
-
-console.log(node1);
-/**
- * for testing function
- *
- * */
-var aa = [];
-aa.push(1);
-aa.unshift(2);
-console.log(aa);
-
-
-//function helper(current,parent, node) {
-//    if(current.left == null){
-//        current.left = node;
-//        return;
-//    } else{
-//        current.right = node;
-//        return;
-//    }
-//    if(current.left != null && current.right != null){
-//        current = current.left;
-//
-//        helper(current,parent,node);
-//        helper(current,parent,node);
-//        return current;
-//    }
-//}
-
-
-// if(this.queue.length != 0){
-//     if(this.queue[0].left != null && this.queue[0].right != null){
-//         this.queue.shift();
-//     }
-//     if(this.queue[0].left == null){
-//         this.queue[0].left = node;
-//
-//     } else {
-//         this.queue[0].right = node;
-//     }
-//     this.queue.push(Node);
-// }
-//var current = this.root;
-//var parent = current;
-//helper(current,parent,node);
