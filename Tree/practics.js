@@ -99,3 +99,9 @@ btr.insert(11);
 btr.insert(8);
 
 console.log(123);
+
+
+var a = [];
+a[0] = null;
+a.pop();
+console.log(a[0]);
