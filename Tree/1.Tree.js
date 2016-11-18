@@ -234,8 +234,26 @@ print("preorder traversal:");
 print("post traversal:");
  postOrder(nums.root);
 
+// BST 的中序遍历in-order 就是从小到达 排列这个数。
 
 
+var nums1 = new BST();
+nums1.insert(7);
+nums1.insert(3);
+nums1.insert(9);
+nums1.insert(1);
+nums1.insert(5);
+nums1.insert(4);
+nums1.insert(6);
+
+print("inorder traversal:---------");
+inOrder(nums1.root);
+
+print("preorder traversal:--------");
+preOder(nums1.root);
+
+print("post traversal:------------");
+postOrder(nums1.root);
 
 var min = nums.getMin();
 print("the minimum value of the BST is: " + min);
