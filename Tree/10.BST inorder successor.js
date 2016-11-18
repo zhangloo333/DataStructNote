@@ -2,6 +2,17 @@
  * Created by lee on 11/17/16.
  */
 
+/**
+ *  BST 的中序便利就是从小到达 排列这个数。
+ *  题目给你一个BST 和一个 node 在in-order排序中找到这个点的next node。如果没有找到返回null
+ *  case1: 如果找到的节点有右子树(right child)- successor = left tree 最小的节点。
+ *  case2: no right child - successor = node的parance.
+ *  case3: no right child && is right child
+ *  case4: last node  is null
+ *
+ *  其实就是拐点的parent 就是要找的值
+ * */
+
 
 function print(data) {
     console.log(data);
@@ -127,3 +138,25 @@ print(inorderSuccessor(nums.root,1));
 print(inorderSuccessor(nums.root,5));
 print(inorderSuccessor(nums.root,4));
 print(inorderSuccessor(nums.root,6));
+
+/**
+ * for testing purpose--用traverse的想法来 通过中间层的变化来改变。
+ * 假设不成立： 应为遍历的情况下，要把他的所有节点有便利一遍。 下载是找到这个node 然后找他的inorder的下一个。
+ * */
+var flag =1;
+function FindTNext(node,target) {
+    if(!(node == null)){
+
+        FindTNext(node.left,target);
+        if(flag === 0) {
+            print(node.data);
+
+        }
+        if(node.data == target){
+            flag = 0;
+            return;
+        }
+        FindTNext(node.right,target);
+
+    }
+}
