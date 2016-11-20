@@ -12,7 +12,6 @@ function print(data) {
     console.log(data);
 }
 
-
 /** Build a tree node
  * */
 
@@ -85,7 +84,7 @@ function inOrder(node) {
 
 
 // validate node 的 fun 主体
-var max = null;
+var max = Number.MIN_VALUE;
 function isValidBST(root) {
     if(root == null) {
         return true;
@@ -104,7 +103,7 @@ function DFScheker(root) {
     }
 
     //judge the root node
-    if(max != null && root.data <= max) {
+    if(root.data <= max) {
         return false;
     }
     max = root.data;
@@ -115,6 +114,26 @@ function DFScheker(root) {
 
     return true;
 }
+
+//用globe变量 inorder 模板的方法来判断 BST
+var max2 = Number.MIN_VALUE;
+function isvalidBST3(root) {
+    if(root == null) {
+        return true;
+    }
+
+    var left = isValidBST(root.left);
+
+    if(max2 > root){
+        return false
+    }
+    max2 = root;
+
+    var right = isValidBST(root.right);
+
+    return left && right;
+}
+
 
 //方法2：使用 max 和 min 的数在不断的上下传递：
 function isvalidBST1(root) {
@@ -156,9 +175,13 @@ root.right = node3;
 node2.left = node4;
 node2.right = node5;
 
+
+print("***************");
+print(isvalidBST3(root));
+
 print("--------------");
 // inOrder(root);
-print(isValidBST(root));
+//print(isValidBST(root));
 print(isvalidBST1(root));
 
 /***
@@ -168,4 +191,3 @@ print(isvalidBST1(root));
  * https://www.youtube.com/watch?v=MILxfAbIhrE
  * http://www.cnblogs.com/rubylouvre/archive/2009/09/16/1568123.html
  */
-/
