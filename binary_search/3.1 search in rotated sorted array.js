@@ -14,24 +14,26 @@
  *
  * */
 
-function search(array, target) {
+// 数组里面没有重复的.
+
+function search(nums, target) {
     // corner case
     if(nums == null || nums.length == 0){
         return -1;
     }
-
+    //函数内部的空间属性
     var start = 0;
     var end = nums.length -1;
 
     while(start +1 < end) {
 
-        var mid = start + (end - start)/2;
+        var mid = Math.trunc(start + (end - start)/2);
 
         if(nums[mid] == target) {
             return mid;
         }
 
-        if(nums[mid] > start){
+        if(nums[mid] > nums[start]){
             if(target >= nums[start] && target < nums[mid]){
                 end = mid;
             } else {
@@ -56,5 +58,15 @@ function search(array, target) {
     }
     return -1;
 
-
 }
+
+
+
+
+
+
+//tesing function
+
+var ary1 = [5,6,7,1,2,3,4];
+console.log(ary1);
+console.log(search(ary1,6));
