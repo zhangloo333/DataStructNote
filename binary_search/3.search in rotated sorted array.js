@@ -12,6 +12,8 @@
  * corner case: empty or null array -> -1
  * 模版： 找到mid 对比
  *
+ * 首先：确定这个
+ *
  * */
 
 function search(array, target) {
