@@ -13,5 +13,62 @@
 var aa = [];
 aa.push(1);
 aa.unshift(2);
+function search(nums, target) {
+    // corner case
+    if(nums == null || nums.length == 0){
+        return -1;
+    }
+    //函数内部的空间属性
+    var start = 0;
+    var end = nums.length -1;
 
+    while(start +1 < end) {
+
+        var mid = Math.trunc(start + (end - start)/2);
+
+        if(nums[mid] == target) {
+            return mid;
+        }
+
+        if(nums[mid] > nums[start]){
+            if(target >= nums[start] && target < nums[mid]){
+                end = mid;
+            } else {
+                start = mid;
+            }
+
+        }else{
+            if(target>nums[mid] && target <= nums[end]){
+                start = mid;
+            } else {
+                end = mid;
+            }
+
+        }
+    }
+
+    if(nums[start] == target){
+        return start;
+    }
+    if(nums[end] == target){
+        return end;
+    }
+    return -1;
+
+}
 console.log(aa);
+
+
+// sort:-- javascript 中的sort不是按照 数字的大小来排列的, 主要是根据unicode pointer(字母顺序表 按照string的顺序来排列的) 来排列的.
+var bb = [1,2,3,2,5,6,78,67,8,9,0];
+var cc = bb.sort(function(a,b){return a-b});
+console.log(cc);
+var items = [
+    { name: 'Edward', value: 21 },
+    { name: 'Sharpe', value: 37 },
+    { name: 'And', value: 45 },
+    { name: 'The', value: -12 },
+    { name: 'Magnetic' },
+    { name: 'Zeros', value: 37 }
+];
+console.log(items.sort(function(a,b){return a.value - b.value}))
