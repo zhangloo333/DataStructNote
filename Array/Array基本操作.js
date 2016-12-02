@@ -7,6 +7,8 @@
  * 2. pop 就是弹出 array last 的元素
  * 3. unshift() 就是在 array 的头添加元素.
  * 4. shift() 就是在array 移除 array的第一个元素.
+ * 5. 如何判断一个数组里是否包含一个数。 .indexOf(data) 如果包含返回 index如果不包含
+ * 6. 怎么delete 任意位置的值。1。先找到这个index，2.删去index上的这个值 array.splice(index，1）
  * */
 
 // aa = [2,1]
@@ -72,3 +74,12 @@ var items = [
     { name: 'Zeros', value: 37 }
 ];
 console.log(items.sort(function(a,b){return a.value - b.value}))
+
+var a = [1, 2, 3];
+console.log(a.indexOf(4)); // false
+
+
+var abc = [1,2,3];
+console.log(abc);
+abc.splice(0,2);
+console.log(abc);
