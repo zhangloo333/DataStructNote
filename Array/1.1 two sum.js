@@ -48,5 +48,39 @@ function checker(nums, sum) {
 
 }
 
-var testing = [3,4,5,6,3,2,65,78];
+// 方法2 用hashmap to 记录这些
+
+function twosum(array, sum) {
+
+    var res = new Array(2);
+    if(array == null || array.length < 2){
+        return res;
+    }
+
+    var mymaps = new Map();
+
+    for(var i= 0; i < array.length-1; i++) {
+        if(mymaps.has(array[i])){
+            res[0] = mymaps.get(array[i]);
+            res[1] = i;
+            return res;
+
+        } else {
+            mymaps.set(sum-array[i],i);
+
+        }
+
+    }
+
+    return res;
+
+}
+
+
+
+var testing = [1,2,3,4,5,7,65,78];
 console.log(checker(testing,14));
+
+console.log(twosum(testing,4));
+
+//
