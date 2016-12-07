@@ -23,6 +23,55 @@
  *
  *  直到pointer1 走到末尾。
  *
- *
+ *  currentSUm = currentSum > 0? currentSum + arr[i] : arr[i]
+ *  globalMax = currentSum > globalMax ? currentSum : globalMax
  *
  */
+
+function maxSubarray(array) {
+    if(array == null || array.length ==0) {
+        return Number.MIN_VALUE;
+    }
+
+    var gSum=0;
+    var tSum =0;
+    var header;
+
+    for(var i =0; i < array.length; i++) {
+        if(array[i]>0){
+            header =i;
+            break;
+        }
+    }
+
+    for(var i = header; i < array.length; i++) {
+        tSum += array[i];
+        if(tSum < 0){
+            tSum = 0;
+        }
+            gSum = Math.max(tSum, gSum);
+    }
+
+    return gSum;
+}
+
+function maxSarray2(array) {
+    if (array == null || array.length == 0) {
+        return Number.MIN_VALUE;
+    }
+
+    var curSum = array[0];
+    var MaxSum = array[0];
+
+    for (var i = 1; i < array.length; i++) {
+        curSum = Math.max(array[i], array[i] + curSum);
+        MaxSum = Math.max(curSum, MaxSum);
+    }
+    return MaxSum;
+}
+
+var num1 = [-2,1,-3,4,-1,2,1,-5,4];
+
+console.log(maxSubarray(num1));
+console.log(maxSarray2(num1));
+
