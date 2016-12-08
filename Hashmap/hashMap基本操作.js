@@ -94,6 +94,7 @@ print(myMap.get(keyString));
 print(myMap.get(keyObj));
 print(myMap.get(keyFunc));
 
+print(myMap);
 
 //怎么遍历一个maps
 
