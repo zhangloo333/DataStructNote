@@ -87,3 +87,9 @@ console.log(contain(2));
  *  1. 判断一个set里面的元素 是都是在另一里面，
  *  2. 如果在 放入新的一个set里面。然后 最终输出。
  */
+
+
+var settest = new Set();
+settest.add(1);
+settest.add(1);
+console.log(settest);
