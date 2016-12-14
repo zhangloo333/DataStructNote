@@ -13,13 +13,32 @@
 //}
 
 
-function a() {
-    function b() {
-        console.log("----" + myVar);
+// function a() {
+//     function b() {
+//         console.log("----" + myVar);
+//     }
+//     var myVar =2
+//     b();
+// }
+//
+// var myVar =1;
+// a();
+
+
+function waitTreeseconds() {
+    var ms = 3000 + new Date().getTime();
+    console.log(new Date().getTime());
+    while(new Date() < ms) {
+        console.log('finshi function');
     }
-    var myVar =2
-    b();
 }
 
-var myVar =1;
-a();
+function clickHandler() {
+    console.log('click event');
+}
+
+//listen for the click event
+document.addEventListener('click',clickHandler);
+
+waitTreeseconds();
+console.log('finished exexution');
