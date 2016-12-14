@@ -25,20 +25,27 @@
 // a();
 
 
-function waitTreeseconds() {
-    var ms = 3000 + new Date().getTime();
-    console.log(new Date().getTime());
-    while(new Date() < ms) {
-        console.log('finshi function');
-    }
-}
-
-function clickHandler() {
-    console.log('click event');
-}
+//function waitTreeseconds() {
+//    var ms = 3000 + new Date().getTime();
+//    console.log(new Date().getTime());
+//    while(new Date() < ms) {
+//        console.log('finshi function');
+//    }
+//}
+//
+//function clickHandler() {
+//    console.log('click event');
+//}
 
 //listen for the click event
-document.addEventListener('click',clickHandler);
+//document.addEventListener('click',clickHandler);
 
-waitTreeseconds();
+//waitTreeseconds();
 console.log('finished exexution');
+
+function great(){
+    console.log("abs");
+}
+great.language = "english";
+
+console.log(great);
