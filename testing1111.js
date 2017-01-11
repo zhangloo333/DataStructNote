@@ -41,11 +41,33 @@
 //document.addEventListener('click',clickHandler);
 
 //waitTreeseconds();
-console.log('finished exexution');
+//console.log('finished exexution');
+//
+//function great(){
+//    console.log("abs");
+//}
+//great.language = "english";
+//
+//console.log(great);
+var s1 = ['abc','asd','asdad'];
+var s2 = ['abc','sddsd'];
 
-function great(){
-    console.log("abs");
+function testing(array1,array2){
+    var l1 = array1.length;
+    var l2 = array2.length;
+    var l = Math.max(l1,l2);
+    console.log(l);
+
+    for(var i = 0; i< array2.length; i++){
+        var temp = array1.indexOf(array2[i])
+        if(!temp){
+            array1[temp]= array1[temp].split("").reverse().join("");
+            console.log(temp + array1[temp]);
+        }
+    }
+
+    return array1.join("");
+
 }
-great.language = "english";
 
-console.log(great);
+console.log(testing(s1,s2));
