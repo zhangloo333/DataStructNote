@@ -47,7 +47,7 @@ function validateCcard(snumber){
     return (sumEven+sumOdd)%10 == 0;
 }
 
-var number = '6228480210713103319';
+var number = '6228480210714103319';
 var out = validateCcard(number);
 console.log(out);
 
