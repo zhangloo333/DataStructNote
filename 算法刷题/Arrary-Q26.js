@@ -18,24 +18,60 @@ function printStart(array) {
         return;
     }
 
-    var cc = array.sort(function (a,b) {
+        array.sort(function (a,b) {
         return a[0] - b[0];
     });
 
-    console.log(cc);
+    // console.log(cc);
 
-    for(var i = 0 ; i < array.length; i++){
+    // for(var i = 0 ; i < array.length; i++){
+    //     var str = "";
+    //     str += array[i][0] + " ";
+    //
+    //     for(var j = 0; j < array[i][0]; j++){
+    //         str += "*";
+    //     }
+    //     console.log(str);
+    // }
+
+    var newArray = array;
+    var tempStore;
+    console.log(tempStore);
+
+    while(newArray.length != 0 ){
+        // console.log(newArray);
+
         var str = "";
-        str += array[i][0] + " ";
-        if(array[i][0] != undefined){
-            for(var j = 0 ; j < array[i][0]; i++){
+
+        if(tempStore == undefined){
+            tempStore = newArray[0][0];
+            str += array[0][0] + " ";
+            for(var j = 0; j < array[0][0]; j++){
                 str += "*";
             }
             console.log(str);
+            newArray.shift();
+            continue;
+        } else{
+
+            if((tempStore+1) != newArray[0][0]){
+                str += tempStore+1
+                console.log(str);
+            } else {
+                str += array[0][0] + " ";
+
+                for(var j = 0; j < array[0][0]; j++){
+                    str += "*";
+                }
+                console.log(str);
+                newArray.shift();
+            }
+            tempStore = tempStore + 1;
         }
     }
+
 }
 
-var sample = [[2,4],[1,3],[4,2]];
+var sample = [[2,4],[1,3],[4,2],[6,5]];
 
 printStart(sample);
