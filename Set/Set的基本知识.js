@@ -25,6 +25,9 @@
  * 方法二： 用 array 实现一个 set
  *  先要判定一个nums 是否在 set的里面 先找到 index = array.indexOf(value);  index < 0 不存在， 如果大于0 返回位置。
  *
+ *  set 怎么变成 array
+ *  var arr1 = Array.from(set);
+ *
  * */
 
 // build in js object for set
@@ -92,4 +95,7 @@ console.log(contain(2));
 var settest = new Set();
 settest.add(1);
 settest.add(1);
+var a1 = [settest];
+
 console.log(settest);
+console.log(a1);

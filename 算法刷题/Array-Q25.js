@@ -38,11 +38,11 @@ function reverseWord(str1, str2) {
         var temp = arry1.indexOf(arry2[i]);
         if(temp != -1) {
             arry1[temp] = arry1[temp].split("").reverse().join("");
-        }
+        } // 这里的temp是返回来的坐标。而不是当前移动的坐标。
     }
 
     var ss = arry1.join(" ");
-    ss=ss.split("").reverse().join("");
+    // ss=ss.split("").reverse().join("");
     console.log(ss);
     return ss;
 
@@ -76,4 +76,5 @@ function reverseWord2(str1, str2) {
 var s1 = "the receptionist was hot";
 var s2 = "receptionist was";
 
+console.log(reverseWord(s1,s2));
 console.log(reverseWord2(s1,s2));
