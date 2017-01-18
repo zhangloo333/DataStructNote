@@ -59,3 +59,22 @@ console.log(lengthM);
 var column = matrix[0].length;
 console.log(column);
 
+
+//怎么在2D array的里面找到 最小值 和 最大值。
+
+var abc = [[1,4],[5,6],[2,6],[10,3],[7,19]];
+var cc = abc.map(function (e) {
+    return e[0];
+})
+
+console.log(cc);
+
+var abcd = [1,4,5,6,2,6,10,3,7,19];
+
+var dd = abcd.map(function (e) {
+    return e*2;
+
+}) // map就是for loop
+
+console.log(dd);
+console.log(abcd);
