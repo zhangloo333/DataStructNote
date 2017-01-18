@@ -27,8 +27,49 @@ function quickSort(data) {
 }
 
 
-var sample = [2,5,3,10,15,9,8,4,1];
+function qSort(array,left,right) {
+    if(left >= right ){
+        return array;
+    }
+    var i = left;
+    var j = right-1;
+    var poviot = array[right];
+
+    console.log("i" + i + "j" + j + "poviot" + poviot);
+
+    while(i < j) {
+        if (array[i] < poviot) {
+            i++;
+            console.log(i);
+            console.log("povit= " + poviot);
+        } else {
+            // swap(array[i], array[j]);
+            var temp = array[i];
+            array[i] = array[right];
+            array[right] = temp;
+            j--;
+        }
+    }
+    swap(array[i],poviot);
+    console.log(array);
+    // qSort(array,left,i-1);
+    // qSort(array,i,right);
+    return array;
+}
 
 
-var newSample = quickSort(sample);
-console.log(newSample);
+function swap(a,b) {
+    var temp = a;
+    a = b;
+    b = temp;
+}
+
+
+
+var sample = [2,5,3,10,15,9,8,4,7];
+
+var new1 = qSort(sample,0,8);
+
+// var newSample = quickSort(sample);
+// console.log(newSample);
+console.log(new1);
