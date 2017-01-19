@@ -17,7 +17,12 @@
 
  6 time complexity: for string 长度
     map traverse 所有的 map member 来更新输出的str
- 
+
+    用到的map 有 new Map()
+    map.has(key) => return true/false
+    map.set(key,value)
+    map.get(value)
+
  */
 
 
