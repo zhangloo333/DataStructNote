@@ -37,7 +37,7 @@
  *
  *  获取value
  *
- *  map.get(key) => return value
+ *  map.get(key) => return value or undefined or none
  *
  *  查询key是否在这个map里面
  *  map.has(key)
