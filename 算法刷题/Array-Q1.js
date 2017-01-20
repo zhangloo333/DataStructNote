@@ -56,6 +56,6 @@ function findRepeat(str) {
     return out;
 }
 
-var sampe = "abcd";
+var sampe = "abcdb";
 var out = findRepeat(sampe);
 console.log(out);
