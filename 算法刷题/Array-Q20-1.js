@@ -18,51 +18,78 @@ function optiString(input) {
     var ii = 0;
 
 
-    for(var i = 1; i < input.length; ++i) {
+    for(var i = 1; i <= input.length; i++) {
+        var result = input.charCodeAt(i) - input.charCodeAt(i-1);
 
-        if(input.charAt(i) - input.charAt(i-1) == 0) {
-            marker == 0;
-            counter++;
-            if(counter == 3){
-                output += input.charAt(h);
-                output += "...";
-                counter = 1;
+        if( result == 0) {
+            if(marker == 1){
+                output += input.charAt(h) +"-->"+input.charAt(i-1)+" ";
+                h = i;
+                ii = i;
             }
 
-        } else if(input.charAt(i) - input.charAt(i-1) == 1) {
+            marker = 0;
+            counter++;
+
+
+
+            // if(counter == 3){
+            //     output += input.charAt(h);
+            //     output += "...";
+            //
+            //     h = i+1;
+            //     counter = 1;
+            //     marker = -1;
+            //     ii= i;
+            // }
+
+        } else if(result == 1) {
             marker = 1;
             ii = i;
 
         } else {
-
             if(marker == -1){
-                output.charAt(i);
+                // output.charAt(i);// 应为没有输出啊了
+                output += input.charAt(h);
+                output += input.charAt(i);
             }
 
             if(marker == 1){
-                output += input.charAt(h) +"-->"+input.charAt(i-1);
+                output += input.charAt(h) +"-->"+input.charAt(i-1)+" ";
                 h = i;
                 ii = i;
                 marker = -1;
             }
 
             if(marker == 0){
-                if(counter == 2){
-                    output += input.charAt(i-1);
-                    output += input.charAt(i-1);
+                // if(counter == 2){
+                //     output += input.charAt(i-1);
+                //     output += input.charAt(i-1);
+                //     output += input.charAt(i);
+                //     // h = i;
+                //     counter = 1;
+                //     marker = -1;
+                //
+                // }
+
+                var inter = Math.floor(counter/3);
+                var rest = counter%3;
+
+                // console.log("inter....."+inter);
+                // console.log("rest....."+rest);
+
+                for(var id = 0; id <inter; id++){
+                    output += input.charAt(h)
+                    output += "..."+" ";
                 }
-                if(counter == 3){
+                for(var jd = 0; jd < rest; jd++){
                     output += input.charAt(h);
-                    output += "...";
                 }
-
-                if(counter == 1){
-                    h = i;
-                    marker = -1;
-                }
+                counter = 1;
+                h = i;
+                // console.log(h);
+                marker = -1;
             }
-
-
         }
 
     }
@@ -71,7 +98,10 @@ function optiString(input) {
     return output;
 }
 
-var str = "1231114106";
+var str = "123456666666232455766";
+var str = "123456 666 666 23 24 55 7 66";
 var out1 = optiString(str);
 
 console.log(out1);
+
+console.log('A'.charCodeAt(0) - 'B'.charCodeAt(0));
