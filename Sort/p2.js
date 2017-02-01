@@ -27,21 +27,67 @@ function partition(arr,h,t) {
         if(arr[lp] <= pivort){
             lp++;
         } else {
-            var temp = arr[lp];
-            arr[lp] = arr[rp];
-            arr[rp] = temp;
+
+            //var temp = arr[lp];
+            //arr[lp] = arr[rp];
+            //arr[rp] = temp;
+
+            swap(arr,lp,rp);
             rp--;
         }
     }
 
-    var temp = arr[lp];
-    arr[lp] = arr[t];
-    arr[t] = temp;
+    //var temp = arr[lp];
+    //arr[lp] = arr[t];
+    //arr[t] = temp;
+
+    swap(arr,lp,t);
+
 
     return lp;
 
 }
 
-var abc = [4,2];
+//把array 也添加进来就可以 用swap 在原位置上更改 array的数了
+function swap(arr,i,j){
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
+// 怎么产生一个随机的数组
+function getRandom(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randArr(min,max,num){
+    var arr =[];
+
+    for(var i = 0 ; i < num; i++) {
+        arr.push(getRandom(min,max));
+    }
+    return arr;
+}
+
+function unikRarray(min,max,num){
+    var storge = new Set();
+
+    while(storge.size <= num){
+        storge.add(getRandom(min,max));
+    }
+    return Array.from(storge);
+}
+
+
+var abc = [3,4,2,5,6,7,8,1,9,3];
+var cde = randArr(1,20,10);
+var ert = unikRarray(1,20,10);
+//console.log(cde);
+console.log("this is unique array = " +  ert);
+
 var output = quicksort(abc);
+var output2 = quicksort(ert);
 console.log(output);
+console.log(output2);
