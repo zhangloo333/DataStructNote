@@ -35,26 +35,31 @@ function longAbsolutP(inputS){
     }
     
     var stack = [0];
+    //console.log(stack.length);
     var maxLen = 0;
 
     inputS.split('\n').map(function (e) {
         console.log("e==" + e);
+
         var lev = e.lastIndexOf('\t')+1;
-        if(stack[lev] != 'undefined'){
 
-        }
-        var elength = e.length-lev;
+        //if(stack[lev] != 'undefined'){
+        //    stack = stack.slice(0,lev-1);
+        //    console.log(stack);
+        //}
 
-        if(e.indexOf('.') == -1){
+        while(lev+1 < stack.length){
             stack.pop();
-            stack.push(e.length-lev);
-        } else {
-            sum stack;
-
-             maxlen = Math.max(maxLen,sum + e.length)
         }
 
-        console.log(elength)
+        var curLen = stack[stack.length-1]+e.length-lev+1;
+        stack.push(curLen);
+
+        if(e.indexOf('.') != -1){
+            maxLen = Math.max(maxLen,curLen-1);
+            console.log(maxLen);
+        }
+        //console.log(elength)
 
     });
     
@@ -62,6 +67,34 @@ function longAbsolutP(inputS){
     return maxLen;
 }
 
-// var er = longAbsolutP(ss);
-var a = [];
-console.log(a[1]);
+ var er = longAbsolutP(ss);
+//var a = [];
+console.log("www"+er);
+
+
+var ccc ='dir/subdir2/file.ext';
+console.log(ccc.length);
+
+
+function lengthLongP(str){
+    var path = str.split('\n');
+    var stack = Array.apply(null, new Array(path.length-1)).map(function () {return 0;});
+
+    var maxLen = 0;
+
+    path.map(function(e){
+        var lev = e.lastIndexOf('\t') + 1;
+        stack[lev+1] = stack[lev] + e.length -lev +1;
+        console.log(stack);
+        var curLen = stack[lev+1];
+
+        if(e.indexOf(".") != -1){
+            maxLen = Math.max(maxLen,curLen-1);
+        }
+    });
+
+    return maxLen;
+}
+
+console.log(lengthLongP(ss));
+
