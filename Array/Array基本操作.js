@@ -83,3 +83,8 @@ var abc = [1,2,3];
 console.log(abc);
 abc.splice(0,2);
 console.log(abc);
+
+
+var cvb = [1,2,3,4,5];
+var ddd = cvb.shift();
+console.log("-----"+ddd);
