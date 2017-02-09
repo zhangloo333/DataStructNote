@@ -59,3 +59,16 @@ console.log(ccc);
 //         output += ss[0+(nRows)]
 //     }
 // }
+
+function test(a){
+    var b = 2;
+    test2(a,b);
+    return b;
+}
+
+function test2(a,b){
+     b = a+b;
+}
+
+var c = test(3);
+console.log(0%2);
