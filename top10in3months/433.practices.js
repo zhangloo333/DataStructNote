@@ -1,9 +1,7 @@
 /**
  * Created by leizha on 2/7/17.
  */
-/**
- * Created by leizha on 1/31/17.
- */
+
 
 function minMutation(start, end, bank) {
     if(start == end){

@@ -1,6 +1,6 @@
 /**
  * Created by leizha on 1/31/17.
- 这个题是关于 BFS 的题，是关于图的题，需要先把图学好再来进行这个。
+ 这个题是关于 BFS 的题，是关于图的题，需要先把图学好,再来进行这个深入的了解。
  */
 
 function minMutation(start, end, bank) {
