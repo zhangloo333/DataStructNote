@@ -65,6 +65,8 @@ console.log(aa);
 var bb = [1,2,3,2,5,6,78,67,8,9,0];
 var cc = bb.sort(function(a,b){return a-b});
 console.log(cc);
+console.log("bb" + bb);
+
 var items = [
     { name: 'Edward', value: 21 },
     { name: 'Sharpe', value: 37 },

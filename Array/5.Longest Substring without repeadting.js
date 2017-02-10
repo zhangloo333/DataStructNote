@@ -39,9 +39,9 @@ function LonestSubtring(ss) {
             }
     }
 
-    console.log(header);
-    console.log(glength);
-    var outp;
+    // console.log(header);
+    // console.log(glength);
+    // var outp;
 
     if(typeof ss === "string"){
 
@@ -57,5 +57,5 @@ function LonestSubtring(ss) {
 
 var a1 = ['b','c','a','c','e','x'];
 // var a1 ='bcacex';
-
+console.log("result--------");
 console.log(LonestSubtring(a1));
