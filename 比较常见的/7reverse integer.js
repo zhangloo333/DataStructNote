@@ -1,6 +1,28 @@
 /**
  * Created by leizha on 2/13/17.
  * reverse intergert
+
+ 这里有两种方法能使一个 integer 来反向的输入.
+ 1 input: number
+ 2 output: number
+ 3 conner case(看看他超出了没有Number.MAX_VALUE 或者小于了没有最小的限制.
+
+ 在写题的时候需要注意的:
+ output = sign('+' or '-') * res(base)
+    1.首先判断这个接受到数字的正负号,
+    2.怎么取 每一位位, num%10,
+    3.怎么不断的缩小 每一位 num/10,别忘了Math.floor(number)
+    4.  res = res*10 + num%10;
+        num = Math.floor(num/10);
+
+    5.因为我们把限制条件放在运算的开始,那么我们必须保证最后一次能够运行.
+         因为最后一次,我们需要 res *10看超出没有超出结果;
+        if(Number.MAX_VALUE / 10 < result || Number.MAX_VALUE - n %10 < result *10) {
+
+
+
+
+
  */
 // string 的写法
 function reverseInterget(n) {

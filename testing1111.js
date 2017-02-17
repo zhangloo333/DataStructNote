@@ -71,3 +71,6 @@ function testing(array1,array2){
 }
 
 console.log(testing(s1,s2));
+
+//
+

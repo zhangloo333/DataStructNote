@@ -1,5 +1,14 @@
 /**
  * Created by leizha on 2/14/17.
+ * 找出大多数,主要是 for 循环一遍,
+ * intial state counter = 1; major = 0;
+ * 如果和major 相同就 counter++; 如果和counter不同就counter --
+ * 如果 counter 减到0的时候,就需要,重新至变成初始状态.
+ *
+ * 怎么想:首先数组要考虑机构性,如果过半的情况下,那他肯定是 不管连续不连续,他总比不是major的数多一个,
+ * 因为他们是从 1 开始的.
+ * 分为连续喝不连续
+ *
  */
 
 
@@ -54,5 +63,28 @@ var majorityElement1 = function(num) {
     return candidate;
 };
 
-var test = [2,2,2,2,6,7];
-console.log(majorityElement1(test));
+//var test = [2,2,2,2,6,7];
+
+// 这个是错误的,because 如果这个数没有超过一半的情况下,而是等于一半的情况下这个就不成立.
+var majorityElement3 = function(nums) {
+    var mj = 0;
+    var cnt = 1;
+
+    for(var i = 0; i < nums.length; i++){
+        if(nums[i] === nums[mj]){
+            cnt++;
+        } else {
+            cnt--;
+        }
+
+        if(cnt === 0){
+            mj = i;
+            cnt = 1;
+        }
+    }
+
+    return nums[mj];
+};
+
+var test = [7,7,7,7,1,2,3,4];
+console.log(majorityElement3(test));
