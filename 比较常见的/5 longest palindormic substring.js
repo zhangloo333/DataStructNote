@@ -2,6 +2,19 @@
  * Created by leizha on 2/17/17.
  * @param {string}
  * @return {string}
+<<<<<<< a9ecd7daae23e36a14c8dd4545c384012aaea48d
+=======
+
+ 这题的难点是从 每一个点都可以是一个新的array
+
+ 怎么才叫对称; 从中间才是,向 两边展开.两边的元素 值是一样的.
+
+
+
+ */
+
+
+>>>>>>> some change
 
  给出一个string 找出最大的镜面 substring
 
@@ -51,7 +64,10 @@ function longestP(s) {
     }
     return s.substring(lo,lo+maxLen);
 
+<<<<<<< a9ecd7daae23e36a14c8dd4545c384012aaea48d
 }
+=======
+>>>>>>> some change
 
 function externdp(s,j,k) {
     while (j >= 0 && k < s.length && s.charAt(j) == s.charAt(k)){
