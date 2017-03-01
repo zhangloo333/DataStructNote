@@ -28,33 +28,33 @@ var isAnagram = function(s,t) {
     return true;
 };
 
-var isAnagramMap = function(s,t) {
-    if(s == undefined || t == undefined){
+var isAnagramMap = function (s, t) {
+    if (s == undefined || t == undefined) {
         return false;
     }
-    if(s.length != t.length) return false;
+    if (s.length != t.length) return false;
 
     var alphMap = new Array(26).fill(0);
 
-    for(var i = 0; i < s.length; i++){
+    for (var i = 0; i < s.length; i++) {
         console.log('b'.charCodeAt(0) - 'a'.charCodeAt(0));
-        console.log("here  " + alphMap[s[i]-'a']);
-        alphMap[s.charAt(i)-'a']++;
-        console.log(alphMap[s.charAt(i)-'a']);
+        console.log("here  " + alphMap[s[i] - 'a']);
+        alphMap[s.charAt(i) - 'a']++;
+        console.log(alphMap[s.charAt(i) - 'a']);
 
     }
-    for(var j = 0; j < s.length; j++){
-        alphMap[s.charAt(j)-'a']--;
+    for (var j = 0; j < s.length; j++) {
+        alphMap[s.charAt(j) - 'a']--;
     }
 
     console.log(alphMap);
-    for(var c of alphMap) {
-        if(c != 0) {
+    for (var c of alphMap) {
+        if (c != 0) {
             return false;
         }
     }
     return true;
-}
+};
 
 
 
