@@ -32,9 +32,13 @@
 
 // build in js object for set
 
-var ary1 = [1,2,3,4,5,6];
+var ary1 = [1,2,3,4,5,6,6];
 console.log(ary1);
 var myset = new Set(ary1);
+console.log(myset);
+// myset.clear();
+console.log(myset.has(6));
+
 
 myset.add('a');
 

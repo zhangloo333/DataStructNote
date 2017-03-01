@@ -90,3 +90,8 @@ console.log(abc);
 var cvb = [1,2,3,4,5];
 var ddd = cvb.shift();
 console.log("-----"+ddd);
+
+//build 一定长度的array，同时赋给初值；
+var cca = new Array(10);
+cca.fill(1);
+console.log(cca);
