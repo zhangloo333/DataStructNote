@@ -10,3 +10,25 @@
  这一题讲的是kmp窗口滑动的问题：
 
  */
+
+//暴力解法；
+
+var strStr = function(haystack, needle) {
+    var m = haystack.length;
+    var n = needle.length;
+
+    if(!n) return 0;
+
+    for(var i = 0; i<= m-n; i++){
+        var j =0;
+        while(j<n){
+            if(haystack[i+j] != needle[j]) {
+                break;
+            }
+            j++;
+        }
+        if(j == n) return i;
+    }
+    return -1;
+
+};
