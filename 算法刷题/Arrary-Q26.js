@@ -22,6 +22,7 @@ function printStart(array) {
         return a[0] - b[0];
     });
 
+
     // console.log(cc);
 
     // for(var i = 0 ; i < array.length; i++){
@@ -36,7 +37,6 @@ function printStart(array) {
 
     var newArray = array;
     var tempStore;
-    console.log(tempStore);
 
     while(newArray.length != 0 ){
         // console.log(newArray);

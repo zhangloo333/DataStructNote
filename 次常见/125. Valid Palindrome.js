@@ -12,6 +12,9 @@
 
  判断回文方法：
 
+ "A man, a plan, a canal: Panama" is a palindrome.
+ "race a car" is not a palindrome.
+
  reverse之后你能不能相等；
  two pointer
 
