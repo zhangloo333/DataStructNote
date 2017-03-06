@@ -2,7 +2,7 @@
  * Created by lee on 2/28/17.
  给出一个数组 找出0把它排在最后，不移动原来的顺序；
  两种方法：
-    方法1 交换的方法
+    方法1 交换的方法：如果是0就用指针指向他，说他可一个被交换
     方法2 找出不为0的数把它放在最前面，如果把余下的都补零: 怎么把数挑出来排序；
 
 
@@ -47,6 +47,26 @@ var moveZeroes2 = function(nums) {
 };
 
 
+var move0tobegin= function(nums) {
+    if(nums == undefined) return nums;
+
+    var ptr = 0;
+    for(var i = 0; i <nums.length; i++) {
+        if(nums[i] == 0) {
+            var temp = nums[ptr];
+            nums[ptr] = nums[i];
+            nums[i] = temp;
+            ptr++;
+        }
+
+
+    }
+    console.log(nums);
+}
+
+
+
 var nums = [0, 1, 0, 3, 12];
-moveZeroes2(nums);
+// moveZeroes2();
+move0tobegin(nums);
 // moveZeroes1(nums);

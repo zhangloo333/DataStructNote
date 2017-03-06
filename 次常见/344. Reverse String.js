@@ -2,6 +2,8 @@
  * Created by lee on 2/28/17.
  *
  * reverse string: Given s = "hello", return "olleh".
+ 很简单的题：iplace的操作就行
+ 但要记住：js中的字符串只能 ready only,not write
  */
 
 /**
