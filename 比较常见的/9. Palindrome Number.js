@@ -58,6 +58,24 @@ function isPalindorme(n) {
     return true;
 }
 
+//这个是为什么 第一个不能成立
+var isPalindorme2 = function (n) {
+    if(n<0) return false;
+    while(n) {
+        // var base = Math.pow(10,n.length-1);// 数字是没有位数的所以不能用length-1
+        //所以只能用一下的 只能不断的除以十，看他到底有几个十：
+        while(Math.floor(n/base) >=10){
+            base *= 10;
+        }
+
+        console.log(base);
+        if(Math.floor(n/base) != n%10) return false;
+        n = Math.floor((n%base)/10); // n%base 舍最好位  （n%base）／10舍去最低位
+    }
+    return true;
+}
+
+
 var isPalindorme1 = function(n) {
     if(n<0 || (n!=0 && n%10 == 0)) return false;
     var res = 0;
@@ -72,4 +90,4 @@ var isPalindorme1 = function(n) {
 
 var int =1221
 
-console.log(isPalindorme1(int));
+console.log(isPalindorme2(int));

@@ -6,6 +6,8 @@
      Return "100".
 
  为操作 必须有 charCodeAt(index)
+ conern case: 空就直接返回
+
  */
 
 /**

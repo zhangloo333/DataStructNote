@@ -19,10 +19,6 @@
          因为最后一次,我们需要 res *10看超出没有超出结果;
         if(Number.MAX_VALUE / 10 < result || Number.MAX_VALUE - n %10 < result *10) {
 
-
-
-
-
  */
 // string 的写法
 function reverseInterget(n) {
@@ -65,7 +61,6 @@ function reversInt(n) {
          //怎么让要来的数回去，就是让返回的数每次都乘以n
         result = result * 10 + n%10;
         n = Math.floor(n/10);
-;
     }
       return sign * result;
 }
