@@ -103,3 +103,12 @@ myMap.set(0, "zero");
 myMap.set(1, "one");
 
 //node里面不支持。
+
+//map value ++ map的object可以实现++的功能
+
+var myMap1 = {};
+myMap1["zero"]=0;
+myMap1["zero"]++;
+myMap1["zero"]="helo"
+
+console.log(myMap1);
