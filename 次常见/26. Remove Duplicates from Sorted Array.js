@@ -19,16 +19,24 @@
 var removeDuplicates = function(nums) {
     if(nums == undefined) return 0;
 
+    nums.sort(function (a,b) {
+        return a-b;
+
+    })
+
     var ptr1 = 1;
+
     for(var i = 1; i< nums.length; ++i){
         if(nums[i] != nums[i-1]){
             nums[ptr1++] = nums[i];
         }
     }
 
-    return ptr1
+    return nums.slice(0,ptr1);
 
 };
-
-removeDuplicates()
+var t = [1,2,1,1,12,3];
+console.log("7".repeat(3));
+console.log(removeDuplicates(t));
+// removeDuplicates()
 

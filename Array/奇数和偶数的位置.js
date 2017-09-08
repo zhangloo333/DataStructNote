@@ -2,10 +2,14 @@
  * Created by lee on 8/23/17.
  * 1. 把奇数 和 偶数 挑出来 [] ,[] [].concat([]);
  * 2. 两个指针，互换，如果遇到
- *  如果 even 和 cur 一个是even，一个是odd，此时是不要交换的，cur++， even++
+ *
+ *
+ *  如果 even 和 cur 一个是even，一个是odd，此时交换的，cur++， even++
  *  cur 是偶数的情况下，even的指针不懂，cur++
  *  cur 不是偶数的情况下，even，cur同时动
  *
+ *  cur的指针如果是偶数的时候，就move
+ *  只有当 cur 和 even 不一样的时候才交换；
  *
  */
 
