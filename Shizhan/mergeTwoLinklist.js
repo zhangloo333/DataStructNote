@@ -55,5 +55,5 @@ var mergetKsort = function (lists) {
         lists = temp;
     }
 
-    return t
+    return temp[0] || null;
 }

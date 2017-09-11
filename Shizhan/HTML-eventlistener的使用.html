@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="listToDestroy">
+    <li><a href="#">first item</a></li>
+    <li><a href="#">second item</a></li>
+    <li><a href="#">third item</a></li>
+    <li><a href="#">forth item</a></li>
+    <li><a href="#">Fifth item</a></li>
+</ul>
+
+</body>
+
+<script>
+    document.getElementById('listToDestroy').addEventListener('click', function (e) {
+        var elm = e.target.parentNode;
+        elm.parentNode.removeChild(elm);
+        e.preventDefault();
+    });
+</script>
+</html>

@@ -15,9 +15,10 @@ function reacerTwoPoint(node,m,n) {
         start = start.next;
     }
 
-    var end = start.next;
-    var pre = end;
-    var cur = end.next;
+    var start2 = start.next;
+
+    var pre = start2;
+    var cur = start2.next;
 
     for(var j = 0; j < n-m; j++){
         var next = cur.next;
@@ -27,7 +28,7 @@ function reacerTwoPoint(node,m,n) {
     }
 
     start.next = pre;
-    end.next = cur;
+    start2.next = cur;
 
     return dummy.next;
 }
@@ -58,4 +59,4 @@ function printNode(node) {
 
 }
 
-printNode(reacerTwoPoint(node1,3,5));
+printNode(reacerTwoPoint(node1,2,4));
