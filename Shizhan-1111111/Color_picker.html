@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>color picker</title>
+    <style>
+        #colorBox {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+<div id="colorBox"></div>
+Red: <input id = "red" type = "number"> <br>
+Green: <input id = "green"type = "number"> <br>
+Blue: <input id = "blue" type= "number"> <br>
+
+<button id = "btn">
+    Set Color
+</button>
+
+<script>
+    function setcolor() {
+        var color = getValue();
+        document.getElementById('colorBox').style.backgroundColor = color;
+
+    }
+
+    function getValue() {
+        var red = document.getElementById('red').value;
+        var blue = document.getElementById('blue').value;
+        var green = document.getElementById('green').value;
+        var out = 'rgb('+ red + ',' + green + ',' + blue + ')';
+        return out
+    }
+
+    document.getElementById('btn').addEventListener('click', setcolor);
+</script>
+
+</body>
+</html>

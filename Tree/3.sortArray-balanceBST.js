@@ -14,25 +14,20 @@ function Node(data) {
     this.show = show;
 }
 
-function show() {
- return this.data;
+var sortArrayToBst = function (array) {
 
+    return help(array,0,array.length-1);
 }
 
-function ArrayToBST(nums) {
-    if(nums == null || nums.length == 0){
-        return null
-    }
-    
+var help = function (array, start, end) {
+    if(start > end) return null;
 
-}
+    var mid = parseInt((start + end)/2);
+    var val = array[mid];
 
-function buildTree(nums,start,end) {
-    if(start > end){
-        return null;
-    }
-    var middle = start + Math.trunc((end - start)/2);
-
-    
+    var node = new TreeNode(val);
+    node.left = help(array,start,mid-1);
+    node.right = help(array,mid+1, end);
+    return node;
 }
 

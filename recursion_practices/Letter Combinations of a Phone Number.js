@@ -26,14 +26,17 @@ var letterCombinations = function(digits) {
     var output = [];
 
     function findCombination(digi,index,s) {
+        console.log(index,":",s);
         if(index == digi.length){
             output.push(s);
+            console.log("get", s, ", return ");
             return;
         }
 
         var c = digi[index];
         var letters = letterMap[c-'0'];
         for(var i = 0; i < letters.length;i++) {
+            console.log("digits[", index, "] = ", c,", use", letters[i]);
             findCombination(digi,index+1,s+letters[i]);
         }
     }
