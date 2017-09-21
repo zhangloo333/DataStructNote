@@ -48,6 +48,14 @@ Array.matrix = function(rows, cols, initial){
 
 console.log(Array.matrix(2,3,1));
 
+
+// 方法3： fill map
+var buildMatrix = function(m,n,init){
+    return Array(m).fill().map(function(){
+        return Array(n).fill(init)
+    })
+}
+
 /** 2D 数组的长度 row 和 cols and totel number
  * matrix.length = rows number
  * matrix[matrix.length].length = cols

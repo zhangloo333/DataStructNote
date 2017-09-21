@@ -1,0 +1,44 @@
+<!doctype html>
+<!--遍历孩子找到查询符合的点-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+<body>
+	  <table>      
+        <tr>
+            <td>#</td>
+            <td class="winner">aa</td>
+            <td>bb</td>
+            <td>cc</td>
+            <td>dd</td>
+        </tr>
+   </table>
+  <script>
+
+  	function getElementsByClassName (className,root) {
+		  var nodeList = [];
+
+		  function validate(node) {
+		  	if(node.classList && node.classList.contains(className)) {
+		  		nodeList.push(node);
+		  	}
+
+		  	for(var i = 0; i < node.childNodes.length; i++) {
+		  		validate(node.childNodes[i]);
+		  	}
+
+		  }
+		  
+		  validate(root);
+		  return nodeList;
+
+	}
+
+console.log(getElementsByClassName('winner',document.body));
+
+  </script>
+</body>
+</html>
+

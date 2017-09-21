@@ -2,6 +2,7 @@
  * Created by lee on 9/8/17.
  */
 
+//recursion 从下倒上
 function getDepth(root) {
 
         if (root == null) return 0;
@@ -13,6 +14,7 @@ function getDepth(root) {
         return Math.max(left,right) + 1;
 }
 
+//从上到下的问题
 
 var maxDepth = function(root) {
     var max = 0;
