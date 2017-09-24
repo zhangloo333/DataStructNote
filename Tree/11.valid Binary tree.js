@@ -6,82 +6,6 @@
  * 方法1： 用一个global 的变量 max 去保存 in-order遍历的结果。如果max和比当前的node小，return true,
  * 否则 return false， return ture的时候需要改变 max的值，以用来下次的比较。
  * */
-// build BST 和 add node
-
-function print(data) {
-    console.log(data);
-}
-
-/** Build a tree node
- * */
-
-function Node(data, left, right) {
-    this.data = data;
-    this.left = left;
-    this.right = right;
-    this.show = show;
-}
-
-function show() {
-    return this.data;
-}
-
-/**
- * Build a tree constructor
- */
-function BST() {
-    this.root = null;
-    this.insert = insert;
-    this.innOrder = inOrder;
-}
-
-/**
- * build a insert() function
- */
-
-function insert(data) {
-    var n = new Node(data, null, null);
-    if (this.root == null) {
-        this.root = n;
-    }
-    else {
-        var current = this.root;
-        var parent;
-        while (true) {
-            parent = current;
-            if (data < current.data) {
-                current = current.left;
-                if (current == null) {
-                    parent.left = n;
-                    break;
-                }
-            }
-            else {
-                current = current.right;
-                if (current == null) {
-                    parent.right = n;
-                    break;
-                }
-            }
-        }
-    }
-}
-
-/**
- * Build a in-order function
- * */
-
-function inOrder(node) {
-    if(!(node == null)){
-        inOrder(node.left);
-        console.log(node.show());
-        inOrder(node.right);
-    }
-}
-
-
-
-
 
 // validate node 的 fun 主体
 var max = Number.MIN_VALUE;
@@ -191,3 +115,82 @@ print(isvalidBST1(root));
  * https://www.youtube.com/watch?v=MILxfAbIhrE
  * http://www.cnblogs.com/rubylouvre/archive/2009/09/16/1568123.html
  */
+
+
+/**
+ * ******************************************************************************************
+ * @param
+ * 怎么建立一个树。
+ * data build BST 和 add node*
+ */
+
+function print(data) {
+    console.log(data);
+}
+
+/** Build a tree node
+ * */
+
+function Node(data, left, right) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+    this.show = show;
+}
+
+function show() {
+    return this.data;
+}
+
+/**
+ * Build a tree constructor
+ */
+function BST() {
+    this.root = null;
+    this.insert = insert;
+    this.innOrder = inOrder;
+}
+
+/**
+ * build a insert() function
+ */
+
+function insert(data) {
+    var n = new Node(data, null, null);
+    if (this.root == null) {
+        this.root = n;
+    }
+    else {
+        var current = this.root;
+        var parent;
+        while (true) {
+            parent = current;
+            if (data < current.data) {
+                current = current.left;
+                if (current == null) {
+                    parent.left = n;
+                    break;
+                }
+            }
+            else {
+                current = current.right;
+                if (current == null) {
+                    parent.right = n;
+                    break;
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Build a in-order function
+ * */
+
+function inOrder(node) {
+    if(!(node == null)){
+        inOrder(node.left);
+        console.log(node.show());
+        inOrder(node.right);
+    }
+}
