@@ -17,6 +17,73 @@
  *
  * */
 
+
+function LevelOrderT(Root) {
+    var output = [];
+
+    if(Root == null) {
+        return output;
+    }
+    var queue = [];
+    console.log(queue.length);
+    queue.push(Root);
+
+    while(queue.length !== 0){
+
+        var size = queue.length;
+        var list = [];
+
+        for(var i = 0; i <size; i++){
+            // var list = [];// wrong place
+            var cur = queue.shift();
+            list.push(cur.data);// wrong place
+
+            if(cur.left != null){  //记住写这一步
+                queue.push(cur.left);
+            }
+            if(cur.right != null){
+                queue.push(cur.right);
+            }
+            // list.push(cur);// wrong place
+        }
+        output.push(list);
+    }
+    return output;
+}
+
+function inOrder(node) {
+    if(!(node == null)){
+        inOrder(node.left);
+        console.log(node.show());
+        inOrder(node.right);
+    }
+}
+
+// var a = [];
+// a.push(1);
+// a.push(2);
+// a.push(3);
+// console.log(a.shift());
+
+var nums = new BST();
+nums.insert(23);
+nums.insert(45);
+nums.insert(16);
+nums.insert(37);
+nums.insert(3);
+nums.insert(99);
+nums.insert(22);
+
+console.log("inorder traversal:");
+inOrder(nums.root);
+
+var abc = LevelOrderT(nums.root);
+console.log(abc);
+
+/***
+ ************************************************************************************************************
+ * test 文件：怎么生成一个tree，并进行测试。
+ */
 function Node(data, left, right) {
     this.data = data;
     this.left = left;
@@ -67,62 +134,3 @@ function insert(data) {
         }
     }
 }
-
-function LevelOrderT(Root) {
-    var output = [];
-    if(Root == null) {
-        return output;
-    }
-        var queue = [];
-    console.log(queue.length);
-        queue.push(Root);
-        while(!(queue.length == 0)){
-            var size = queue.length;
-            var list = [];
-
-            for(var i = 0; i <size; i++){
-                // var list = [];// wrong place
-                var cur = queue.shift();
-                list.push(cur.data);// wrong place
-                if(cur.left != null){  //记住写这一步
-                    queue.push(cur.left);
-                }
-                if(cur.right != null){
-                    queue.push(cur.right);
-                }
-                // list.push(cur);// wrong place
-            }
-            output.push(list);
-        }
-        return output;
-}
-
-function inOrder(node) {
-    if(!(node == null)){
-        inOrder(node.left);
-        console.log(node.show());
-        inOrder(node.right);
-    }
-}
-
-// var a = [];
-// a.push(1);
-// a.push(2);
-// a.push(3);
-// console.log(a.shift());
-
-var nums = new BST();
-nums.insert(23);
-nums.insert(45);
-nums.insert(16);
-nums.insert(37);
-nums.insert(3);
-nums.insert(99);
-nums.insert(22);
-
-console.log("inorder traversal:");
-inOrder(nums.root);
-
-var abc = LevelOrderT(nums.root);
-console.log(abc);
-

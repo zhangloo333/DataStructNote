@@ -25,7 +25,7 @@ class Runner{
 
     run() {
         var self = this;
-
+        //一定要记住 async 这个是一个function
         if(this.queue.length !== 0) {
             self.async(self.queue.pop(),function () {
                 self.run.call(self);
