@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #wrap{
+            background: blanchedalmond;
+        }
+        #wrap > div{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+</div>
+
+<script>
+    var p = document.getElementById('wrap');
+
+    function inject(node,target,position) {
+        switch(position) {
+            case 'top':
+                if(!target.firstChild) {
+                    target.parentNode.appendChild(node);
+                } else {
+                    target.parentNode.insertBefore(node,target.parentNode.firstChild);
+                }
+                break;
+
+            case 'bottom':
+                target.parentNode.appendChild(node);
+                break;
+
+            case 'before':
+                target.parentNode.insertBefore(node,target);
+                break;
+
+            case  'after':
+                if(target.nextSibling) {
+                    target.parentNode.insertBefore(node,target.nextSibling);
+                } else {
+                    target.parentNode.appendChild(node);
+                }
+        }
+    }
+
+    var node = document.createElement('div');
+    node.innerText = "this is new";
+
+    var po = p.childNodes[3];
+    inject(node,po,"after");
+
+</script>
+</body>
+</html>

@@ -5,6 +5,7 @@
  *
  * input : array
  * return: sum / subarray 这个序列
+
  * couner case: 如果null input的情况下， 返回的是一个最小的number.min value
  * subarray： 用来个pointer就可以确定，一个头，一个尾部
  *
@@ -108,4 +109,3 @@ function max3(arr) {
 // console.log(maxSubarray(num1));
 console.log(maxSarray2(num1));
 console.log(max3(num1));
-
