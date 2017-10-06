@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent>div {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            margin: 10px;
+            text-align: center;
+        }
+        .parent{
+            background: purple;
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div id="box4" style="width: 200px; height: 200px; background: red; margin: 30px" >4</div>
+    <div class="box5">5</div>
+</div>
+
+<script>
+    var t = document.getElementById("box4");
+    console.log(t);
+
+    /** set color */
+    //method1: 把这个style object 整体都替换掉，会影响其他的属性；
+//    t.setAttribute("style","background:blue");
+    //method2: 只替换style里面的某一个 属性
+//    t.style.background = "blue";
+    //method3: 只替换style里面的某一个 属性
+//    t.style.setProperty("background", "blue");
+
+    /** 改变 width， height， margin*/
+//    t.setAttribute("style","width:300px");
+//    console.log(t.style.width = "500px");
+
+    console.log(t.style.borderRadius = "10px");// 这个起作用 这个比较好
+    console.log(t.style.setProperty("borderRadius","10px"));// 这个不起作用
+
+
+    /**
+     * refernce:  https://developer.mozilla.org/en-US/docs/Web/API/Node/removeChild
+     * 找到 target， child， parent， sibling， append，
+     * firstChild
+     * parentNode
+     *
+     * insertBefore
+     * appendChild
+     * .style.background ="green"
+     *
+     * parent node : 第一个child #text，第二个才是 真正的HTML tag child
+     * */
+
+    // parentNode，firstChild, lastChild, childNodes[n] n = 2*位置-1；
+
+    console.log("parentnode",t.parentNode); // 输出 #text
+    console.log("firstChild",t.parentNode.firstChild); // 输出 #text
+    console.log("lastChild",t.parentNode.lastChild); // 输出 #text
+
+    //nextSibling, previousSibling
+    console.log("nextSibling",t.parentNode.firstChild.nextSibling); // 输出 第一个真正的孩子<div class="box1">1</div>
+    console.log("previousSibling",t.parentNode.childNodes[4].previousSibling); // 输出 第一个真正的孩子<div class="box1">1</div>
+
+    //插入 appendChild()， insertBefore()
+
+    var newNode = document.createElement("div");
+    newNode.innerText = "insertNode";
+
+    console.log("appendChild", t.parentNode.appendChild(newNode));
+
+    var newNode1 = document.createElement("div");
+    newNode1.innerText = "insertNode1";
+
+    console.log("insertBefore", t.parentNode.insertBefore(newNode1,t.parentNode.childNodes[9]));
+
+    // removeChild
+    console.log("removeChild",t.parentNode.removeChild(t.parentNode.childNodes[3])); // 输出 第一个真正的孩子<div class="box1">1</div>
+
+
+</script>
+</body>
+</html>
