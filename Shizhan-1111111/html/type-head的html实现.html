@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+input: <input id = "in" type="text" onkeyup="add()" onblur="rm()">
+
+<div id="a">
+
+</div>
+<button onclick="rm()">remove</button>
+<button onclick="add(5)">add</button>
+
+<script>
+    function rm(){
+        var t = document.getElementById("a");
+        for(var i = t.childNodes.length-1 ; i > 0 ; i--) {
+            t.removeChild(t.childNodes[i]);
+        }
+    }
+
+    function typeHead() {
+        var storage = ["dog", "cat", "category", "pig", "cte"];
+        var tar = document.getElementById("in").value;
+        var out = storage.filter(function(e){
+            return e.indexOf(tar) == 0;
+        })
+        console.log(out);
+
+        return out; // out =[cat", "category"];
+    }
+
+    function add() {
+        var t = document.getElementById("a");
+        var fragment = document.createDocumentFragment();
+        rm();
+
+        var out = typeHead();
+        for(var i = 0; i < out.length; i++) {
+            var node = document.createElement("div");
+            node.innerText = out[i];
+            fragment.appendChild(node);
+
+        }
+        t.appendChild(fragment);
+
+    }
+
+</script>
+</body>
+</html>

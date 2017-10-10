@@ -18,6 +18,7 @@
 <script>
     document.getElementById('listToDestroy').addEventListener('click', function (e) {
         var elm = e.target.parentNode;
+        console.log('elm',elm, 'elm-p',elm.parentNode);
         elm.parentNode.removeChild(elm);
         e.preventDefault();
     });
