@@ -17,21 +17,25 @@
  * 5. 重新recursion 3-4 整体程序的步骤
  * */
 
-function helper(matrix, row, col,offset, array){
-    if(row == 0 || col == 0) {
-        return null;
+function helper(matrix, row, col,offset){
+    var array = [];
+    if(row <= 0 || col <= 0) {
+        return [];
     }
-    if(row == 0){
-        for(var i = 0; i < col-1; i++){
-            array.push(matrix[0][i]);
+
+    if(row == 1){
+        for(var i = offset; i < col + offset; i++){
+            array.push(matrix[offset][i]);
+
         }
-        return; // return 可以什么都不用带的
+
+        return array; // return 可以什么都不用带的
     }
-    if(col == 0){
-        for(var i = 0; i < row-1; i++){
-            array.push(matrix[i][0]);
+    if(col == 1){
+        for(var i = offset; i < row + offset; i++){
+            array.push(matrix[i][offset]);
         }
-        return; // return 可以什么都不用带的
+        return array; // return 可以什么都不用带的
     }
 
     // 1. up row
@@ -39,38 +43,37 @@ function helper(matrix, row, col,offset, array){
         array.push(matrix[offset][i]);
     }
 
+
     //2. right col
     for(var i = offset; i < row -1 + offset; i++){
         array.push(matrix[i][col-1+offset]);
     }
+
 
     //3. down row
     for(var i = col-1+offset; i>offset; i--){
         array.push(matrix[row-1 + offset][i]);
     }
 
+
     //4. left col
     for(var i = row-1+offset; i>offset;i--){
         array.push(matrix[i][offset]);
     }
 
-    helper(matrix,row-2,col-2,offset+1,array);
 
+    return array.concat(helper(matrix,row-2,col-2,offset+1));
 }
 
 function SpiralOrder(matrix){
     var res = [];
-    if(matrix == null || matrix.length == 0){
-        return res;
-    }
-    if(matrix[0] == null || matrix[0].length == 0){
-        return res;
-    }
-
+    if(!matrix || matrix.length === 0) return res;
+    if(!matrix[0] || matrix[0].length === 0) return res;
+    
     var row = matrix.length;
     var col = matrix[0].length;
-    helper(matrix,row,col,0,res);
-    return res;
+    
+    return helper(matrix,row,col,0);
 }
 
 // 建立一个矩阵;

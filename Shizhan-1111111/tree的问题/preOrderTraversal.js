@@ -15,12 +15,13 @@ var preorderTraversal = function(root) {
     var right = preorderTraversal(root.right);
 
 
-    output = output.concat(left);
-    output.push(root.val);
+    // output = output.concat(left);
+   // output.push(root.val);
+   // output = output.concat(right);
 
-    output = output.concat(right);
-
-    return output
+   //化简成最简单的
+   // output = output.concat(left,[root.val],right);
+   return output.concat(left,[root.val],right)
 };
 
 
