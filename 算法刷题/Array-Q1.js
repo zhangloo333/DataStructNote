@@ -25,37 +25,52 @@
 
  */
 
-
+/*
+* 逐步counter加法：
+注意counter是从counter = 1 开始的不是从0开始的。
+注意最后一个采集补上所以 i <= str.length;
+*/
 
 function findRepeat(str) {
 
     if(str.length == 0){
         return [];
     }
-
-    var arr = str.split("");
-    console.log(arr);
-    var storage = new Map();
+    var counter = 1;
     var out="";
-
-    for(var i = 0; i < arr.length; ++i){
-        if(storage.has(arr[i])){
-            storage.set(arr[i],storage.get(arr[i])+1); // 这一点错了。主要是把 arr[i]+1 写成了 arr[i+1];
-        } else {
-            storage.set(arr[i],1);
+    for(var i = 1; i <= str.length; i++){
+        if(str[i] !== str[i-1]){
+            out += counter + str[i-1];
+            counter = 1;
+        }else {
+            counter++
         }
     }
-    console.log(storage);
-
-    function buildStr(value,key,map) {
-        out += value+key;
-    }
-
-    storage.forEach(buildStr);
-
     return out;
 }
 
-var sampe = "abcdb";
-var out = findRepeat(sampe);
-console.log(out);
+
+
+// 统计法：用一个hashmap来保存他们的个数，然后再把他们个个的输出
+ function findRepeat(str) {
+
+     if(str.length == 0){
+         return [];
+     }
+     var storage = {};
+     var out="";
+
+     for(var i = 0; i < str.length; i++){
+         storage[str[i]] = storage[str[i]]+1 || 1;
+     }
+
+     for(var e in storage) {
+         out += storage[e]+e;
+     }
+
+     return out;
+ }
+
+ var sampe = "aabbbccd";
+ var out = findRepeat(sampe);
+ console.log(out);
