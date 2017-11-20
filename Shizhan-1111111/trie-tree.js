@@ -38,6 +38,7 @@ Trie.prototype.insert = function (word) {
     tree.isWord = true;
 }
 
+
 Trie.prototype.search = function (word) {
     var tree = this.root;
 
@@ -70,6 +71,34 @@ Trie.prototype.startsWith = function(prefix) {
     return true;
 };
 
+//怎么输出type-head 的预测
+Trie.prototype.predicWord = function (word) {
+    var allWords = [];
+    var rootnode = this.root;
+    var findLastNode = function (w) {
+      while(w.length > 0) {
+        if(rootnode.children[w[0]]){
+            rootnode = rootnode.children[w[0]];
+            w = w.substr(1);
+        }
+      }
+      return rootnode;
+    }
+
+    var wordHelper = function (strSofar, tree) {
+         for(let k in tree.children){
+             const childObj = tree.children[k];
+             var newString = strSofar + childObj.key;
+             if(childObj.isWord){
+                 allWords.push(newString);
+             }
+             wordHelper(newString,childObj);
+         }
+    }
+     var lastNode = findLastNode(word);
+     wordHelper(word,lastNode);
+     return allWords;
+}
 
 var root = new Trie();
 root.insert("hello");
@@ -79,4 +108,3 @@ console.log(root.search("yellow"));
 console.log(root.startsWith("yel"));
 
 console.log(JSON.stringify(root));
-

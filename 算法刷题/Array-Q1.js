@@ -49,9 +49,7 @@ function findRepeat(str) {
     return out;
 }
 
-
-
-// 统计法：用一个hashmap来保存他们的个数，然后再把他们个个的输出
+// 统计法：用一个hashmap来统计他们出现的个数，然后再for loop 循环输出 他们
  function findRepeat(str) {
 
      if(str.length == 0){

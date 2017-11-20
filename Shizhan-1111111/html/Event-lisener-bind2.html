@@ -26,8 +26,8 @@
 //                else if (e.target.textContent == 'd') alert(4);
 //                else if (e.target.textContent == 'e') alert(5);
 //            })
-
-             list[i].addEventListener('click', print.bind(this,i));
+              console.log(this);
+             list[i].addEventListener('click', print.bind(undefined,i));
         }
     })()
 
