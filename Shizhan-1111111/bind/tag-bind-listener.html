@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--方法一 给出tag 然后进行绑定-->
+<p>
+    方法一 给出tag 然后进行绑定
+</p>
+<ul id = "list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<script>
+    function init() {
+        var list = document.getElementById('list').children;
+        for(var i = 0; i < list.length; i++) {
+            list[i].addEventListener('click',print.bind(this,i));
+        }
+    }
+
+    function print(a) {
+        alert(a);
+    }
+    init();
+</script>
+
+<!--方法二 自己创建tag然后进行绑定-->
+<p>
+    方法二 自己创建tag然后进行绑定
+</p>
+
+<script>
+    function creatTag() {
+        for(var i = 0 ; i < 10; i++) {
+            var tag = document.createElement("p");
+            tag.innerText = i;
+            tag.addEventListener('click',print.bind(this,i));
+            document.body.appendChild(tag);
+        }
+    }
+    creatTag();
+</script>
+
+<p>
+    方法三通过e.tagart.context进行绑定
+</p>
+
+<ul id = "list3">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+
+<script>
+        function init() {
+            var lists = document.getElementById('list3').children;
+            for(var i = 0; i < lists.length; i++) {
+                lists[i].addEventListener('click',function (e) {
+                    alert(e.target.textContent);
+                })
+            }
+        }
+        init();
+</script>
+</body>
+</html>
