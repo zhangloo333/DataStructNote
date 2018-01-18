@@ -13,6 +13,42 @@
     <a class="tooltip" href="#link" title="Tooltip text!">This is a link</a>
   </body>
   <script type="text/javascript">
+  $('.tooltip').each(function(node) {
+    var tip = $('div').class('tip').hide(),
+        title = node.attr('title');
+    $('body').append(tip.html(title));
 
+    // on hover, show the tip and position
+    $([tip, node]).hover(function() {
+      var offset = node.offset();
+      tip.css({
+        position: 'absolute',
+        left: offset.left,
+        top: offset.top
+      });
+      tip.show();
+    }, function() {
+      tip.hide();
+    });
+  });
+  /**
+   * Without much positioning work, it's likely that a long tooltip would fly off the edge of the page. To solve this, they need to place the element, calculate it's right edge, and if it's greater than the right edge, move the tooltip to the left until it's back in the page. Bonus points if they also think about how this may impact the carat.
+
+
+
+var offset = node.offset();
+var leftShift = 0;
+tip.css({
+  position: 'absolute',
+  left: offset.left,
+  top: offset.top
+});
+if (tip.offset().left + tip.width() > $(document).width()) {
+  leftShift = $(document).width() - (tip.offset().left + tip.width());
+  tip.css({
+    left: offset.left - leftShift
+  });
+}
+   */
   </script>
 </html>

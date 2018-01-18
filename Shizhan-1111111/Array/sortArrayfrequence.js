@@ -16,7 +16,8 @@ function customSort(arr) {
     }
     console.log(record);
 
-    for(e in record) {for(var i = 0; i < arr.length; i++){
+    for(e in record) {
+      for(var i = 0; i < arr.length; i++){
         record[arr[i]] = record[arr[i]]+1 || 1;
     }
         frequencySet.add(record[e]);
