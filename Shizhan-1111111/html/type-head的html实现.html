@@ -21,11 +21,22 @@
         <li>select item2</li>
     </ul>
 </div>
-input: <input id = "in" list="a" onkeyup="add()" onblur="rm()">
 
-<datalist id="a">
+<div>
+    <label for="in">input:</label>
+     <input id = "in" list="a" onkeyup="add()" onblur="rm()">
+    <datalist id="a"></datalist>
+</div>
 
-</datalist>
+<!-- <input list="browsers">
+<datalist id="browsers">
+  <option value="Internet Explorer">
+  <option value="Firefox">
+  <option value="Chrome">
+  <option value="Opera">
+  <option value="Safari">
+</datalist> -->
+
 <button onclick="rm()">remove</button>
 <button onclick="add(5)">add</button>
 
