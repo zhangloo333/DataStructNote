@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .miniprofile {
+            width: 600px;
+            height: 600px;
+            background: yellow;
+            position: relative;
+            top: 200px;
+            left: 300px;
+        }
+
+        /*#miniprofile {*/
+            /*position: absolute;*/
+            /*top: 198px;*/
+            /*left: 318px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<div id="network-updates">
+    <a href="#" class="miniprofile" data-member-id="12345" data-type="person"> Steve Johnson</a>
+</div>
+<script>
+    (function () {
+        document.querySelector(".miniprofile").addEventListener("mouseover",showMiniprofile);
+        document.querySelector(".miniprofile").addEventListener("mouseout",hideMiniprofile);
+
+
+        function showMiniprofile(e) {
+            console.log('target', e.target);
+            const target = e.target;
+            if(target) {
+                //memberID 是取 个人的信息的
+                const memberId = target.getAttribute('data-member-id');
+                console.log("memberId",memberId);
+                const showInfo = "this is miniprofile info";
+
+                let newWidge = document.querySelector("#miniprofile");
+                if(!newWidge) {
+                    newWidge = document.createElement('div');
+                    newWidge.id = "miniprofile";
+                    newWidge.innerHTML = showInfo;
+                    newWidge.style.position = 'absolute';
+                    document.body.appendChild(newWidge);
+                    newWidge.style.display = 'none';
+                    const position_top = target.getBoundingClientRect().top;
+                    const position_left = target.getBoundingClientRect().left;
+
+                    console.log('postion-top', position_top);
+                    console.log('postion-left', position_left);
+
+                    newWidge.style.top = position_top - 30 + "px";
+                    newWidge.style.left = position_left + 10 + "px";
+
+                    console.log('style', newWidge.style.top, newWidge.style.left);
+
+                }
+                newWidge.style.display = 'block';
+
+            }
+        }
+
+        function hideMiniprofile(e) {
+            const target = document.querySelector("#miniprofile");
+            if(target) {
+                console.log('enter');
+             target.style.display = "none";
+             console.log('display', target.style.display);
+            }
+        }
+    })()
+
+
+</script>
+</body>
+</html>

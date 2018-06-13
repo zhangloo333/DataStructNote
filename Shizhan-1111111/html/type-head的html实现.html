@@ -4,12 +4,28 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<style>
+    #a{
+        z-index: 100;
+        overflow:hidden;
+        background: lightgray;
+    }
+</style>
 <body>
-input: <input id = "in" type="text" onkeyup="add()" onblur="rm()">
-
-<div id="a">
-
+        <!-- https://www.w3schools.com/tags/tag_datalist.asp -->
+<div>
+    <ul>
+        <li>select item1</li>
+        <li>select item4</li>
+        <li>select item3</li>
+        <li>select item2</li>
+    </ul>
 </div>
+input: <input id = "in" list="a" onkeyup="add()" onblur="rm()">
+
+<datalist id="a">
+
+</datalist>
 <button onclick="rm()">remove</button>
 <button onclick="add(5)">add</button>
 
@@ -39,8 +55,8 @@ input: <input id = "in" type="text" onkeyup="add()" onblur="rm()">
 
         var out = typeHead();
         for(var i = 0; i < out.length; i++) {
-            var node = document.createElement("div");
-            node.innerText = out[i];
+            var node = document.createElement("option");
+            node.value = out[i];
             fragment.appendChild(node);
 
         }

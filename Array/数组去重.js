@@ -1,3 +1,6 @@
+/**
+ * 自执行函数前面有~
+ */
 ~function() {
  var pro = Array.prototype;
  pro.uniqArray = function uniqArray(){
