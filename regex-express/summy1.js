@@ -67,3 +67,4 @@ var rest1 = str.match(reg4);
 
 let strgroup = 'my name is {0}, my age is {1}, i come from {2}, i love {3}';
 let copyMap = ['lei', 29, 'california', 'javascript'];
+let reg;
