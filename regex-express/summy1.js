@@ -49,5 +49,21 @@ var reg4 = /\d+?/g;
 const str = 'asdadasd234asdasds2039';
 var rest = str.match(reg4);
 console.log('rest', rest);
+// 怎么写一个match的方法在正则的当中, 远离只能搜索大正则，而不是小增则。
+String.prototype.match = function(reg) {
+  let array = [],
+    char = reg.exec(this);
+  while (char) {
+    array.push(char);
+    char = reg.exec(this);
+  }
+  return array;
+};
 
+var reg4 = /\d+?/g;
+const str = 'asdadasd234asdasds2039';
+var rest1 = str.match(reg4);
 //分组捕获
+
+let strgroup = 'my name is {0}, my age is {1}, i come from {2}, i love {3}';
+let copyMap = ['lei', 29, 'california', 'javascript'];
