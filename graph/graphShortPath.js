@@ -10,6 +10,7 @@
  * 3. black 已发现
  * 
  * 队列： 
+ * 广度优先，他的回溯点都是，最近的路径
  * 
  */
 
@@ -57,6 +58,10 @@ const Graph = function() {
     var initColor = function() {
         return vertics.reduce((memo,element)=>{return {...memo, [element]:"white"}}, {})
     }
+
+    //广度优先算法：
+    //d 距离
+    //pred 回溯点
     this.bfs = function(v, callback) {
         let color = initColor();
         /**
@@ -68,6 +73,16 @@ const Graph = function() {
          */
         let queue = [];
         queue.push(v);
+
+        //short path:
+        //initial 
+        let distance = {};
+        let pred = {};
+        for(let i = 0; i < vertics.length; i++) {
+            distance[vertics[i]] = 0;
+            pred[vertics[i]] =  null;
+        }
+
         while(queue.length > 0) {
             //出列
             let now = queue.shift()
@@ -78,6 +93,11 @@ const Graph = function() {
                     // 未发现的全部入列，并且表示为已发现
                     //1.变成已发现，2 入列
                     color[subDingdian] = "gray";
+
+                    //设置回溯点
+                    pred[subDingdian] = now;
+                    distance[subDingdian] = distance[now] + 1;
+
                     queue.push(subDingdian);
                 }
                 //已发现的点就不需要入列了
@@ -87,6 +107,10 @@ const Graph = function() {
                 callback(now);
             }
         } 
+        return {
+            pred,
+            distance
+        }
     }
 }
 
@@ -103,7 +127,25 @@ testGraph.addEdges('A', 'D');
 testGraph.addEdges('B', 'E');
 testGraph.addEdges('B', 'F');
 testGraph.addEdges('C', 'D');
+testGraph.addEdges('D', 'F');
 
 
 // testGraph.print();
-testGraph.bfs('A', (p)=>console.log(p));
+// console.log(testGraph.bfs('A'));
+
+//广度优先算法的天然的 能解决的最短路径，进行遍历的时候是最短的；
+let shortPath = function(from, to) {
+    let path = testGraph.bfs('A');
+    let current = to;
+    let pathRecord = [];
+    while(current !== from) {
+        console.log('current',current, 'from', from, 'to', to);
+        pathRecord.push(current);
+        current = path.pred[current];
+    }
+    pathRecord.push(current);
+    console.log(pathRecord.reverse());
+}
+
+//必须从顶点到端点，不能从端点到顶点
+shortPath('A','F');

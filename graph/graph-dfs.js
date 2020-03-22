@@ -1,20 +1,9 @@
 /**
- * 图的三种方式：
- * 1.未发现， (山未发现这个点) 
- * 2.已发现， (发现了此点，但是未查找此点全部连接的节点)
- * 3.以探索 （一经发现此点连接的全部节点）
- * 
- * 用color 来表示这几个状态：
- * 1. white 未发现
- * 2. gray 已发现
- * 3. black 已发现
- * 
- * 队列： 
- * 
+ * dfs 是用树的结构去遍历的
+ * 看成一个分散的 树结构
  */
 
-
-/**
+ /**
  * Class is a ajust table
  */
 const Graph = function() {
@@ -52,41 +41,29 @@ const Graph = function() {
          }
         console.log('graph:', s);
     }
-
     //white: 未发现， gray: 未探索， black: 以探索
     var initColor = function() {
         return vertics.reduce((memo,element)=>{return {...memo, [element]:"white"}}, {})
     }
-    this.bfs = function(v, callback) {
-        let color = initColor();
-        /**
-         * color = [
-         *  A: 'white',
-         *  B: 'white',
-         *  .....
-         * ]
-         */
-        let queue = [];
-        queue.push(v);
-        while(queue.length > 0) {
-            //出列
-            let now = queue.shift()
-            let bian = adjList[now];
-            for(let i=0; i< bian.length; i++) {
-                var subDingdian = bian[i];
-                if(color[subDingdian] === 'white') {
-                    // 未发现的全部入列，并且表示为已发现
-                    //1.变成已发现，2 入列
-                    color[subDingdian] = "gray";
-                    queue.push(subDingdian);
-                }
-                //已发现的点就不需要入列了
+
+    var dfsVisite = function(u, color,callback) {
+        color[u] = 'gray';
+        let n = adjList[u]; //获取所有的邻居
+        for(var i = 0; i< n.length; i++) {
+            let w = n[i];
+            if(color[w] == "white") {
+                dfsVisite(w, color, callback);
             }
-            color[now] = 'black';
-            if(callback) {
-                callback(now);
-            }
-        } 
+        }
+        color[u] = 'black';
+        if(callback) {
+           callback(u) 
+        }
+    }
+
+    this.dfs = function(v, callback) {
+        var color = initColor();
+        dfsVisite(v, color, callback);
     }
 }
 
@@ -105,5 +82,4 @@ testGraph.addEdges('B', 'F');
 testGraph.addEdges('C', 'D');
 
 
-// testGraph.print();
-testGraph.bfs('A', (p)=>console.log(p));
+testGraph.dfs('A', (e)=>console.log(e));
