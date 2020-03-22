@@ -41,12 +41,16 @@ const Graph = function() {
 const testGraph = new Graph();
 testGraph.addVertics('A');
 testGraph.addVertics('B');
-testGraph.addEdges('A', 'B');
 testGraph.addVertics('C');
-testGraph.addEdges('C', 'B');
 testGraph.addVertics('D');
+testGraph.addVertics('E');
+testGraph.addVertics('F');
+testGraph.addEdges('A', 'C');
+testGraph.addEdges('A', 'D');
+testGraph.addEdges('A', 'B');
 testGraph.addEdges('C', 'D');
-testGraph.addEdges('D', 'B');
+testGraph.addEdges('B', 'E');
+testGraph.addEdges('B', 'F');
 
 
 testGraph.print();
